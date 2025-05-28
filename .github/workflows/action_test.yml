@@ -1,0 +1,21 @@
+name: action_test
+on: push
+jobs:
+  setup_test_lint:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4z
+
+     - name: Set up Node.js
+       uses: actions/setup-node@v4
+
+     - name: Install dependencies
+       run: make setup
+
+     - name: Run lint
+       run: make lint
+
+     - name: Run test
+       run: make test
